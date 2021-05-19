@@ -1,6 +1,5 @@
 
 //just set this up with the api i generated the other day, alot of this can and probably will change
-//import MarkerClusterer from '@google/markerclustererplus';
 
 loadMapAPI();
 
@@ -12,7 +11,7 @@ function runMap() {
 
 
 function loadMapAPI() {
-    const googleMapsAPIKey = 'AIzaSyBOyXcPfjFGjrUmoHWXsoSFnoSyRcXsnW0';
+    const googleMapsAPIKey = '';
     const googleMapsAPIURL = `https://maps.googleapis.com/maps/api/js?key=${googleMapsAPIKey}&callback=runMap`;    
 
     const script = document.createElement('script');
