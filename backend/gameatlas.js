@@ -4,9 +4,11 @@ const fs = require('fs');
 const app = require('express')();
 const path = require('path');
 const cors = require('cors');
-
+// const mongoose = require('mongoose');
 const hostname = 'localhost';
 const port = 3000;
+
+// require("dotenv").config();
 
 const server = require('http').Server(app);
 
