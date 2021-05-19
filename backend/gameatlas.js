@@ -18,3 +18,19 @@ app.get("/GameAtlas/", (req, res) => {
 server.listen(port, hostname, () => {
 	console.log(`Server running at http://${hostname}:${port}/`);
 });
+
+
+
+//js for addgame.html
+var checkbox = document.getElementById("recurring");
+function validator() {
+  if (checkbox.checked == false) {
+    document.getElementById('day').disabled = true;
+    document.getElementById('time').disabled = true;
+  } else {
+    document.getElementById('day').disabled = false;
+    document.getElementById('time').disabled = false;
+  }
+}
+
+checkbox.addEventListener('click', validator);

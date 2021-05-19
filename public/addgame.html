@@ -9,6 +9,7 @@
       type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
     />
+    
     <link rel="stylesheet" href="styles.css" />
     <title>Game Submission Form</title>
   </head>
@@ -45,7 +46,7 @@
             <label class="form-check-label" for="recurring">Is this a recurring event?</label>            
           </div> <br>
 
-          <select class="form-select">
+          <select class="form-select" id="day" disabled>
             <label for="day">Day of the week</label>
             <option selected>Day of the week</option>
             <option value="sunday">Sunday</option>
@@ -59,7 +60,7 @@
 
           <div class="md-form md-outline">
             <label for="time">Select Time</label>
-            <input type="time" id="time" class="form-control" placeholder="Select time">
+            <input type="time" id="time" class="form-control" placeholder="Select time" disabled>
           </div><br><br> 
 
           <div class="form-group mt-3 mb-0">
@@ -69,5 +70,6 @@
         </form>
       </div>
     </main>
+    <script src="../backend/addgame.js"></script>
   </body>
 </html>

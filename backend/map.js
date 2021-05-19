@@ -1,6 +1,8 @@
 
 //just set this up with the api i generated the other day, alot of this can and probably will change
 
+
+
 loadMapAPI();
 
 function runMap() {
@@ -33,3 +35,22 @@ function initMap(){
     const map = new google.maps.Map(mapDiv, mapOptions);
     return map;
 }
+
+
+
+//js for addgame.html
+
+// var checkbox = document.getElementById("recurring");
+// function checkRecurring() {
+
+//     if (checkbox.checked) {
+//         document.getElementById('day').disabled = false;
+//         document.getElementById('time').disabled = false;
+//     } else {
+//         document.getElementById('day').disabled = true;
+//         document.getElementById('time').disabled = true;
+//     }
+
+// }
+
+// checkbox.addEventListener('click', checkRecurring);
