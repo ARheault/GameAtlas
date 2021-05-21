@@ -118,3 +118,5 @@ router.route("/delete").post(async (req, res) => {
     }
   }
 });
+
+module.exports = router;
