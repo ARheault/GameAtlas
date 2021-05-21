@@ -1,14 +1,19 @@
 const mongoose = require("mongoose");
+const Game = require("./game.model");
 const Schema = mongoose.Schema;
 
-const User = new Schema(
+const Location = new Schema(
   {
-    username: {
+    name: {
       type: String,
       required: true,
     },
-    password: {
+    address: {
       type: String,
+      required: true,
+    },
+    games: {
+      type: Game,
       required: true,
     },
     dateCreated: {
@@ -22,4 +27,4 @@ const User = new Schema(
   }
 );
 
-module.exports = mongoose.model("User", User);
+module.exports = mongoose.model("Location", Location);
