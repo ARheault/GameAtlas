@@ -162,11 +162,11 @@ router.route("/addHomeLocation").post(async (req, res) => {
       }
     })
     .catch((err) =>
-    res.status(400).json({
-      success: false,
-      reason: `Error: ${err} for User: ${req.body.username}`,
-    })
-  );
+      res.status(400).json({
+        success: false,
+        reason: `Error: ${err} for User: ${req.body.username}`,
+      })
+    );
 });
 
 /**
