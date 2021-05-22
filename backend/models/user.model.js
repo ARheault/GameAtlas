@@ -19,6 +19,7 @@ const User = new Schema(
     homeLocation: {
       type: String,
       required: false,
+      default: "",
     },
   },
   {
