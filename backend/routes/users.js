@@ -59,30 +59,33 @@ router.route("/add").post(async (req, res) => {
       homeLocation = req.body.homeLocation;
     }
     if (homeLocation !== "") {
-      const aUser = new User({
+      const newUser = new User({
         username,
         password,
         date,
         homeLocation,
       });
+      newUser
+        .save()
+        .then(() => console.log(`User: ${req.body.username} added.`))
+        .then(() => res.status(200).send(`User: ${req.body.username} added.`))
+        .catch((err) =>
+          res.status(400).json({ Error: err, User: req.body.username })
+        );
     } else {
-      const aUser = new User({
+      const newUser = new User({
         username,
         password,
         date,
       });
+      newUser
+        .save()
+        .then(() => console.log(`User: ${req.body.username} added.`))
+        .then(() => res.status(200).send(`User: ${req.body.username} added.`))
+        .catch((err) =>
+          res.status(400).json({ Error: err, User: req.body.username })
+        );
     }
-
-    // Save the user in the database.
-    aUser
-      .save()
-      .then(() => console.log(`User: ${req.body.username} added.`))
-      .then(() => res.send(`User: ${req.body.username} added.`))
-      .catch((err) =>
-        res
-          .status(400)
-          .send(`Error: ${err}\nAttempting to add\nUser: ${req.body.username}`)
-      );
   }
 });
 
@@ -99,7 +102,7 @@ router.route("/delete").post(async (req, res) => {
     console.log("User does not exist.");
     res.status(406).json({ authenticated: false, reason: "User not found" });
   } else {
-    if (aUser[0].password === req.body.password) {
+    if (aUser[0].password !== req.body.password) {
       console.log(
         `cannot delete User: ${req.body.username}\n bad password: ${req.body.password}`
       );
@@ -117,6 +120,100 @@ router.route("/delete").post(async (req, res) => {
       });
     }
   }
+});
+
+/**
+ * This is the route to add a home location to a user that does not have one set. It specifically works for
+ * users that have a null equivalent value for their home location.
+ * @param req.body.username The username of the user the client wants to add a home location to.
+ * @param req.body.password The password of said user so we can authenticate that they should be able to access this user.
+ * @return A json object that indicates success as well as a reason for that success
+ */
+router.route("/addHomeLocation").post(async (req, res) => {
+  await User.find({
+    username: req.body.username,
+    password: req.body.password,
+  })
+    .then((user) => {
+      if (user.length > 1) {
+        console.log("User does not exist.");
+        res.status(406).json({ success: false, reason: "User not found" });
+      } else {
+        if (user[0].password !== req.body.password) {
+          console.log(
+            `Cannot add home location to User: ${req.body.username}\nBad password: ${req.body.password}`
+          );
+          res.status(200).json({ success: false, reason: "bad password" });
+        } else {
+          // We want to add not replace
+          if (user[0].homeLocation === "") {
+            user[0].homeLocation = req.body.homeLocation;
+            res.status(200).json({ success: true });
+          } else {
+            // don't replace
+            console.log(
+              `Cannot add home location to User: ${req.body.username}\nhomeLocation alredy exists`
+            );
+            res
+              .status(200)
+              .json({ success: false, reason: "homeLocation already exists" });
+          }
+        }
+      }
+    })
+    .catch((err) =>
+    res.status(400).json({
+      success: false,
+      reason: `Error: ${err} for User: ${req.body.username}`,
+    })
+  );
+});
+
+/**
+ * This is the route to update a home location for a user. It specifically works for
+ * users that want to update a home location rather than add one to a null equivalent value.
+ * @param req.body.username The username of the user the client wants to add a home location to.
+ * @param req.body.password The password of said user so we can authenticate that they should be able to access this user.
+ * @return A json object that indicates success as well as a reason for that success
+ */
+router.route("/updateHomeLocation").post(async (req, res) => {
+  await User.find({
+    username: req.body.username,
+    password: req.body.password,
+  })
+    .then((user) => {
+      if (user.length > 1) {
+        console.log("User does not exist.");
+        res.status(406).json({ success: false, reason: "User not found" });
+      } else {
+        if (user[0].password !== req.body.password) {
+          console.log(
+            `Cannot add home location to User: ${req.body.username}\nBad password: ${req.body.password}`
+          );
+          res.status(200).json({ success: false, reason: "bad password" });
+        } else {
+          // We want to add not replace
+          if (user[0].homeLocation === "") {
+            user[0].homeLocation = req.body.homeLocation;
+            res.status(200).json({ success: true });
+          } else {
+            // don't replace
+            console.log(
+              `Cannot add home location to User: ${req.body.username}\nhomeLocation alredy exists`
+            );
+            res
+              .status(200)
+              .json({ success: false, reason: "homeLocation already exists" });
+          }
+        }
+      }
+    })
+    .catch((err) =>
+      res.status(400).json({
+        success: false,
+        reason: `Error: ${err} for User: ${req.body.username}`,
+      })
+    );
 });
 
 module.exports = router;
