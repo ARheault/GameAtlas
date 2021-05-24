@@ -24,4 +24,16 @@ router.route("/findLocation:id").get((req, res) => {
   console.log("Find a location based on ID passed via url");
 });
 
+router.route("/addGame").post((req, res) => {
+  console.log("add a game to a location based on request.")
+});
+
+router.route("/deleteGame").post((req, res) => {
+  console.log("Delete a game based on request.");
+});
+
+router.route("/addAuthor").post((req, res) => {
+  console.log("Add an author to a location");
+});
+
 module.exports = router;
