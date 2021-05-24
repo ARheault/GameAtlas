@@ -13,6 +13,7 @@ app.use(express.json());
 
 const uri = process.env.ATLAS_URI;
 
+// Commented out because I'm unable to whitelist my current IP to connect to the database.
 /*mongoose.connect(uri, { useNewUrlParser: true, useUnifiedTopology: true });
 const connection = mongoose.connection;
 connection.once("open", () => {
