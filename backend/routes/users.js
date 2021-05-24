@@ -216,4 +216,5 @@ router.route("/updateHomeLocation").post(async (req, res) => {
     );
 });
 
+
 module.exports = router;
