@@ -14,3 +14,92 @@ body {
   margin: 0;
   padding: 0;
 }
+
+body {
+  background-image: url('/resources/portland_background.jpg');
+  background-repeat: no-repeat;
+  background-size: 100vw 100vh;
+  padding: 0;
+  margin: 0;
+}
+
+a {
+  color: black;
+  text-decoration: none;
+}
+
+a:hover {
+  text-decoration: underline;
+}
+
+#container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  width: 100vw;
+  height: 100vh;
+  color: #000000;
+}
+
+.title {
+  font-size: 12vw;
+  font-weight: 700;
+  text-shadow: 0 0 7vw hsla(43, 100%, 60%, 1), 0 0 3vw hsla(43, 100%, 60%, 1);
+  margin: 0 20%;
+  display: block;
+  cursor: default;
+}
+
+.action {
+  font-size: 5vw;
+  font-weight: 500;
+  display: inline-block;
+  text-shadow: 0 0 3vw hsla(43, 100%, 50%, 1);
+  cursor: pointer;
+}
+
+.action:hover {
+  text-shadow: 0 0 3vw hsla(43, 100%, 50%, 1), 0 0 3vw hsla(43, 100%, 50%, 1), 0 0 3vw hsla(43, 100%, 50%, 1);
+}
+
+.about {
+  text-shadow: 0 0 2vw #FFFFFF, 0 0 2vw #FFFFFF, 0 0 2vw #FFFFFF, 0 0 2vw #FFFFFF;
+  cursor: default;
+}
+
+#abouttitle {
+  font-size: 6vw;
+  margin: 3vw 30%;
+  display: block;
+}
+
+#abouttext {
+  font-size: 2vw;
+  width: 50vw;
+}
+
+#helpbar {
+  position: fixed;
+  top: 2vw;
+  right: 2vw;
+  width: 10vw;
+  height: 30vw;
+  display: flex;
+  flex-direction: column;
+}
+
+#helpbar > * {
+  width: 10vw;
+  height: 4vw;
+  display: block;
+  font-size: 3vw;
+  text-align: right;
+  text-shadow: 0 0 1vw #FFFFFF;
+  cursor: pointer;
+}
+
+#helpbar > *:hover {
+  text-shadow: 0 0 1vw #FFFFFF, 0 0 1vw #FFFFFF, 0 0 1vw #FFFFFF, 0 0 1vw #FFFFFF;
+}
+

@@ -3,6 +3,8 @@ const express = require("express");
 const path = require("path");
 const cors = require("cors");
 const mongoose = require("mongoose");
+const http = require('http');
+
 
 require("dotenv").config();
 
@@ -10,6 +12,11 @@ const app = express();
 const port = process.env.PORT || 5000;
 app.use(cors());
 app.use(express.json());
+app.use(express.static('public'))
+
+const server = http.createServer(app);
+const { Server } = require("socket.io");
+const io = new Server(server);
 
 const uri = process.env.ATLAS_URI;
 
@@ -24,7 +31,7 @@ const server = require("http").Server(app);
 
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\index.html"));
+  res.sendFile(path.join(__dirname, "/index.html"));
 });
 
 // Set user router variables
@@ -37,6 +44,10 @@ app.use("/users", userRouter);
 app.use("/locations", locationRouter);
 app.use("/games", gameRouter);
 
-const expressServer = app.listen(port, () => {
+server.listen(port, () => {
   console.log(`Server \nPort: ${port}\n`);
+});
+
+io.on('connection', (socket) => {
+  console.log('a user connected');
 });
