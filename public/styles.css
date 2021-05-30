@@ -1,6 +1,9 @@
 .topnav {
-  background-color: red;
-  overflow: hidden;
+  height: 45px;
+  margin: 0px;
+  border: 0px;
+  width: 100%;
+  background-color: rgb(26, 95, 95);
 }
 
 #map {
@@ -13,4 +16,32 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
+}
+
+.topnav ul {
+  list-style-type: none;
+  margin: 0px;
+  padding: 0px;
+}
+
+.topnav ul li {
+  float: none;
+  padding: 0px;
+  width: 150px;
+  display: inline-block;
+}
+
+.topnav ul li a {
+  padding: 20px;
+  text-decoration: none;
+  font-size: 20px;
+  font-family: Verdana, Geneva, Tahoma, sans-serif;
+}
+
+#topnav a:link {
+  color: black;
+}
+
+#topnav a:hover {
+  background-color: cadetblue;
 }

@@ -9,7 +9,7 @@ function runMap() {
 }
 
 function loadMapAPI() {
-  const googleMapsAPIKey = config.API_KEY;
+  var googleMapsAPIKey = config.API_KEY;
   const googleMapsAPIURL = `https://maps.googleapis.com/maps/api/js?key=${googleMapsAPIKey}&callback=runMap`;
 
   const script = document.createElement("script");
