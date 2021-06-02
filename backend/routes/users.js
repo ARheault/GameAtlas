@@ -43,7 +43,7 @@ router.route("/login").post(async (req, res) => {
  * @param req.body.homeLocation This is an optional paramter
  */
 router.route("/add").post(async (req, res) => {
-  // First make sure the account isn't attempting to add an account wit ha duplicate name
+  // First make sure the account isn't attempting to add an account with a duplicate name
   const aUser = await User.find({ username: req.body.username });
   if (aUser.length > 0) {
     console.log("User already exists.");
