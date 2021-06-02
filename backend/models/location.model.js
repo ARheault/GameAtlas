@@ -23,6 +23,12 @@ const Location = new Schema(
       required: true,
       default: 0,
     },
+    creators: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
     dateCreated: {
       type: Date,
       required: true,
