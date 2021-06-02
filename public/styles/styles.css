@@ -45,3 +45,7 @@ body {
 #topnav a:hover {
   background-color: cadetblue;
 }
+
+.h1 {
+  text-transform: capitalize;
+}
