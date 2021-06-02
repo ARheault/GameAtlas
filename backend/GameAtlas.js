@@ -8,6 +8,7 @@ require("dotenv").config();
 
 const app = express();
 const port = process.env.PORT || 5000;
+app.use(express.static("../public"));
 app.use(cors());
 app.use(express.json());
 
@@ -21,7 +22,18 @@ connection.once("open", () => {
 });
 
 app.get("/", (req, res) => {
+  console.log("\nHomepage request\n");
   res.sendFile(path.join(__dirname, "..\\public\\index.html"));
+});
+
+app.get("/about", (req, res) => {
+  console.log("\nabout request\n");
+  res.sendFile(path.join(__dirname, "..\\public\\about.html"));
+});
+
+app.get("/map", (req, res) => {
+  console.log("\nmap request\n");
+  res.sendFile(path.join(__dirname, "..\\public\\map.html"));
 });
 
 // Set user router variables
@@ -33,6 +45,10 @@ const gameRouter = require("./routes/games.js");
 app.use("/users", userRouter);
 app.use("/locations", locationRouter);
 app.use("/games", gameRouter);
+
+app.use((req, res) => {
+  res.status(404).send("404 error, page not found");
+});
 
 const expressServer = app.listen(port, () => {
   console.log(`Server \nPort: ${port}\n`);

@@ -2,10 +2,20 @@ const router = require("express").Router();
 let User = require("../models/user.model");
 
 // Default route returns all users
-router.route("/").get((req, res) => {
-  User.find()
-    .then((users) => res.json(users))
+router.route("/").get(async (req, res) => {
+  let allUsers = [];
+  await User.find()
+    .then((response) => {
+      return response;
+    })
+    .then((data) => {
+      data.forEach((user) => {
+        allUsers.push({ Name: user.username, homeLocation: user.homeLocation });
+      });
+    })
     .catch((err) => res.status(400).json(`Error: ${err}`));
+
+  res.status(200).json(allUsers);
 });
 
 // We could add another json response that indicates where to redirect the user to
@@ -103,7 +113,7 @@ router.route("/delete").post(async (req, res) => {
   // First authentification to make sure the client should be allowed to delete this account.
   const aUser = await User.find({ username: req.body.username });
   if (aUser.length) {
-if (aUser[0].password !== req.body.password) {
+    if (aUser[0].password !== req.body.password) {
       console.log(
         `cannot delete User: ${req.body.username}\n bad password: ${req.body.password}`
       );
@@ -117,17 +127,16 @@ if (aUser[0].password !== req.body.password) {
           res.send(
             `Error when attempting to delete user: ${req.body.username}\nError: ${err}`
           );
-        }
-        else{
-          res.status(200).json({success: true, userDeleted: req.body.username});
+        } else {
+          res
+            .status(200)
+            .json({ success: true, userDeleted: req.body.username });
         }
       });
     }
-
   } else {
-  console.log("User does not exist.");
+    console.log("User does not exist.");
     res.status(406).json({ authenticated: false, reason: "User not found" });
-
   }
 });
 
