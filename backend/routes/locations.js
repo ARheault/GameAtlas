@@ -124,7 +124,9 @@ router.route("/deleteGame").post(async (req, res) => {
   // Otherwise if it has no games anymore delete the empty location
   else {
     const query = { name: req.body.name };
-
+    console.log(
+      `Location ${req.body.name} deleted game ${req.body.gameToDelete}\nLocation had no games left and was deleted`
+    );
     Location.deleteOne(query, (err, result) => {
       if (err) {
         res.send(
