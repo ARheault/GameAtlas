@@ -8,8 +8,31 @@ router.route("/").get((req, res) => {
     .catch((err) => res.status(400).send(`Error: ${err}`));
 });
 
-router.route("/add").post((req, res) => {
-  console.log("add route for locations");
+router.route("/add").post(async (req, res) => {
+  // First make sure the location isn't attempting to add a location with a duplicate name
+  const aLocation = await Location.find({ username: req.body.username });
+  if (aLocation.length > 0) {
+    console.log("Location already exists.");
+    res.status(406).json({success: false, reason: "Location already exists"});
+  } else {
+    const locationName = req.body.name;
+    const locationAddress = req.body.address;
+    const creator = req.body.creator;
+
+    const newLocation = new Location({
+      name: locationName,
+      address: locationAddress,
+      creators: creator,
+      dateCreated: Date.now(),
+    });
+    newLocation
+      .save()
+      .then(() => console.log(`Location: ${req.body.name} added.`))
+      .then(() => res.status(200).send(`Location: ${req.body.name} added.`))
+      .catch((err) =>
+        res.status(400).json({ Error: err, Location: req.body.name })
+      );
+  }
 });
 
 router.route("/delete").post((req, res) => {
@@ -25,7 +48,7 @@ router.route("/findLocation:id").get((req, res) => {
 });
 
 router.route("/addGame").post((req, res) => {
-  console.log("add a game to a location based on request.")
+  console.log("add a game to a location based on request.");
 });
 
 router.route("/deleteGame").post((req, res) => {
