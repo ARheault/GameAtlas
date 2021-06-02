@@ -15,6 +15,12 @@ const Game = new Schema(
       type: Number,
       required: true,
     },
+    creators: [
+      {
+        type: String,
+        required: true,
+      },
+    ],
     dateCreated: {
       type: Date,
       required: true,
