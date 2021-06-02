@@ -59,8 +59,14 @@ router.route("/delete").post(async (req, res) => {
   }
 });
 
-router.route("/findLocation").post((req, res) => {
-  console.log("Find a location based on request.");
+router.route("/findLocation").post( async (req, res) => {
+  const aLocation = await Location.find({name: req.body.name });
+  if(aLocation.length){
+    res.status(200).json({suceess: true, location: aLocation[0]});
+  }
+  else{
+    res.status(400).json({success: false, reason: "Location not found"});
+  }
 });
 
 router.route("/findLocation:id").get((req, res) => {
