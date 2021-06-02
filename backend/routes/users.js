@@ -47,7 +47,7 @@ router.route("/add").post(async (req, res) => {
   const aUser = await User.find({ username: req.body.username });
   if (aUser.length) {
     console.log("User already exists.");
-    res.status(406).json({Error: "User already exists", success: false});
+    res.status(406).json({ Error: "User already exists", success: false });
   } else {
     const username = req.body.username;
     const password = req.body.password;
@@ -68,7 +68,9 @@ router.route("/add").post(async (req, res) => {
       newUser
         .save()
         .then(() => console.log(`User: ${req.body.username} added.`))
-        .then(() => res.status(200).json({User: req.body.username, success: true}))
+        .then(() =>
+          res.status(200).json({ User: req.body.username, success: true })
+        )
         .catch((err) =>
           res.status(400).json({ Error: err, User: req.body.username })
         );
@@ -81,7 +83,9 @@ router.route("/add").post(async (req, res) => {
       newUser
         .save()
         .then(() => console.log(`User: ${req.body.username} added.`))
-        .then(() => res.status(200).json({User: req.body.username, success: true}))
+        .then(() =>
+          res.status(200).json({ User: req.body.username, success: true })
+        )
         .catch((err) =>
           res.status(400).json({ Error: err, User: req.body.username })
         );
@@ -98,11 +102,8 @@ router.route("/add").post(async (req, res) => {
 router.route("/delete").post(async (req, res) => {
   // First authentification to make sure the client should be allowed to delete this account.
   const aUser = await User.find({ username: req.body.username });
-  if (aUser.length < 1) {
-    console.log("User does not exist.");
-    res.status(406).json({ authenticated: false, reason: "User not found" });
-  } else {
-    if (aUser[0].password !== req.body.password) {
+  if (aUser.length) {
+if (aUser[0].password !== req.body.password) {
       console.log(
         `cannot delete User: ${req.body.username}\n bad password: ${req.body.password}`
       );
@@ -117,8 +118,16 @@ router.route("/delete").post(async (req, res) => {
             `Error when attempting to delete user: ${req.body.username}\nError: ${err}`
           );
         }
+        else{
+          res.status(200).json({success: true, userDeleted: req.body.username});
+        }
       });
     }
+
+  } else {
+  console.log("User does not exist.");
+    res.status(406).json({ authenticated: false, reason: "User not found" });
+
   }
 });
 
