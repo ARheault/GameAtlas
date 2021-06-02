@@ -69,8 +69,14 @@ router.route("/findLocation").post( async (req, res) => {
   }
 });
 
-router.route("/findLocation:id").get((req, res) => {
-  console.log("Find a location based on ID passed via url");
+router.route("/findLocation:id").get(async (req, res) => {
+  const aLocation = await Location.find({name: req.params.id});
+  if(aLocation.length){
+    res.status(200).json({suceess: true, location: aLocation[0]});
+  }
+  else{
+    res.status(400).json({success: false, reason: "Location not found"});
+  }
 });
 
 router.route("/addGame").post((req, res) => {
