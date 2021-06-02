@@ -10,10 +10,10 @@ router.route("/").get((req, res) => {
 
 router.route("/add").post(async (req, res) => {
   // First make sure the location isn't attempting to add a location with a duplicate name
-  const aLocation = await Location.find({ username: req.body.username });
+  const aLocation = await Location.find({ username: req.body.name });
   if (aLocation.length > 0) {
     console.log("Location already exists.");
-    res.status(406).json({success: false, reason: "Location already exists"});
+    res.status(406).json({ success: false, reason: "Location already exists" });
   } else {
     const locationName = req.body.name;
     const locationAddress = req.body.address;
@@ -35,8 +35,28 @@ router.route("/add").post(async (req, res) => {
   }
 });
 
-router.route("/delete").post((req, res) => {
-  console.log("delete route for locations");
+router.route("/delete").post(async (req, res) => {
+  // First authentification to make sure the client should be allowed to delete this account.
+  const aLocation = await Location.find({ name: req.body.name });
+  if (aLocation.length) {
+    // query for user to delete
+    const query = { name: req.body.name };
+
+    Location.deleteOne(query, (err, result) => {
+      if (err) {
+        res.send(
+          `Error when attempting to delete user: ${req.body.name}\nError: ${err}`
+        );
+      } else {
+        res.status(200).json({ success: true, userDeleted: req.body.name });
+      }
+    });
+  } else {
+    console.log("Location does not exist.");
+    res
+      .status(406)
+      .json({ authenticated: false, reason: "Location not found" });
+  }
 });
 
 router.route("/findLocation").post((req, res) => {
