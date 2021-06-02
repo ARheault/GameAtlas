@@ -60,10 +60,10 @@ router.route("/add").post(async (req, res) => {
     }
     if (homeLocation !== "") {
       const newUser = new User({
-        username,
-        password,
-        date,
-        homeLocation,
+        username: username,
+        password: password,
+        dateCreated: date,
+        homeLocation: homeLocation,
       });
       newUser
         .save()
@@ -74,9 +74,9 @@ router.route("/add").post(async (req, res) => {
         );
     } else {
       const newUser = new User({
-        username,
-        password,
-        date,
+        username: username,
+        password: password,
+        dateCreated: date,
       });
       newUser
         .save()
@@ -148,7 +148,15 @@ router.route("/addHomeLocation").post(async (req, res) => {
           // We want to add not replace
           if (user[0].homeLocation === "") {
             user[0].homeLocation = req.body.homeLocation;
-            res.status(200).json({ success: true });
+            user[0]
+              .save()
+              .then(() => console.log(`User: ${req.body.username} added.`))
+              .then(() =>
+                res.status(200).json({ User: req.body.username, success: true })
+              )
+              .catch((err) =>
+                res.status(400).json({ User: req.body.username, Error: err })
+              );
           } else {
             // don't replace
             console.log(
@@ -195,7 +203,15 @@ router.route("/updateHomeLocation").post(async (req, res) => {
           // We want to add not replace
           if (user[0].homeLocation === "") {
             user[0].homeLocation = req.body.homeLocation;
-            res.status(200).json({ success: true });
+            user[0]
+              .save()
+              .then(() => console.log(`User: ${req.body.username} added.`))
+              .then(() =>
+                res.status(200).json({ User: req.body.username, success: true })
+              )
+              .catch((err) =>
+                res.status(400).json({ User: req.body.username, Error: err })
+              );
           } else {
             // don't replace
             console.log(
@@ -215,6 +231,5 @@ router.route("/updateHomeLocation").post(async (req, res) => {
       })
     );
 });
-
 
 module.exports = router;
