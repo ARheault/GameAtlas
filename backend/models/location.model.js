@@ -12,12 +12,9 @@ const Location = new Schema(
       type: String,
       required: true,
     },
-    games: [
-      {
-        type: Game,
-        required: true,
-      },
-    ],
+    games: [{
+      type: String,
+    }],
     numGames: {
       type: Number,
       required: true,

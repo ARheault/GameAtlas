@@ -24,4 +24,12 @@ router.route("/findGame:id").get((req, res) => {
   console.log("Find a game based on ID passed via url");
 });
 
+router.route("/edit").post((req, res) => {
+  console.log("Edit a game based on request.")
+});
+
+router.route("/addAuthor").post((req, res) => {
+  console.log("Add an author to a game");
+});
+
 module.exports = router;
