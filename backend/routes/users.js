@@ -45,9 +45,9 @@ router.route("/login").post(async (req, res) => {
 router.route("/add").post(async (req, res) => {
   // First make sure the account isn't attempting to add an account with a duplicate name
   const aUser = await User.find({ username: req.body.username });
-  if (aUser.length > 0) {
+  if (aUser.length) {
     console.log("User already exists.");
-    res.status(406).send("User already exists");
+    res.status(406).json({Error: "User already exists", success: false});
   } else {
     const username = req.body.username;
     const password = req.body.password;
@@ -68,7 +68,7 @@ router.route("/add").post(async (req, res) => {
       newUser
         .save()
         .then(() => console.log(`User: ${req.body.username} added.`))
-        .then(() => res.status(200).send(`User: ${req.body.username} added.`))
+        .then(() => res.status(200).json({User: req.body.username, success: true}))
         .catch((err) =>
           res.status(400).json({ Error: err, User: req.body.username })
         );
@@ -81,7 +81,7 @@ router.route("/add").post(async (req, res) => {
       newUser
         .save()
         .then(() => console.log(`User: ${req.body.username} added.`))
-        .then(() => res.status(200).send(`User: ${req.body.username} added.`))
+        .then(() => res.status(200).json({User: req.body.username, success: true}))
         .catch((err) =>
           res.status(400).json({ Error: err, User: req.body.username })
         );
