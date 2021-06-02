@@ -13,30 +13,29 @@ router.route("/add").post(async (req, res) => {
   const aGame = await Game.find({ gameName: req.body.name });
   if (aGame.length > 0) {
     console.log("Game already exists.");
-    res.status(406).json({ success: false, reason: "Game already exists" });
-  } else {
-    const gameName = req.body.name;
-    const minPlayers = req.body.min;
-    const maxPlayers = req.body.max;
-    const isReocurring = req.body.reocurring;
-    const creator = req.body.creator;
-
-    const newGame = new Game({
-      gameName: gameName,
-      minimumPlayers: minPlayers,
-      maximumPlayers: maxPlayers,
-      creators: creator,
-      reocurring: isReocurring,
-      dateCreated: Date.now(),
-    });
-    newGame
-      .save()
-      .then(() => console.log(`Game: ${req.body.name} added.`))
-      .then(() => res.status(200).send(`Game: ${req.body.name} added.`))
-      .catch((err) =>
-        res.status(400).json({ Error: err, Game: req.body.name })
-      );
+    return res
+      .status(406)
+      .json({ success: false, reason: "Game already exists" });
   }
+  const gameName = req.body.name;
+  const minPlayers = req.body.min;
+  const maxPlayers = req.body.max;
+  const isReocurring = req.body.reocurring;
+  const creator = req.body.creator;
+
+  const newGame = new Game({
+    gameName: gameName,
+    minimumPlayers: minPlayers,
+    maximumPlayers: maxPlayers,
+    creators: creator,
+    reocurring: isReocurring,
+    dateCreated: Date.now(),
+  });
+  newGame
+    .save()
+    .then(() => console.log(`Game: ${req.body.name} added.`))
+    .then(() => res.status(200).send(`Game: ${req.body.name} added.`))
+    .catch((err) => res.status(400).json({ Error: err, Game: req.body.name }));
 });
 
 router.route("/delete").post(async (req, res) => {
@@ -44,7 +43,7 @@ router.route("/delete").post(async (req, res) => {
   const aGame = await Game.find({ gameName: req.body.name });
   if (aGame.length) {
     if (!aGame[0].creators.includes(req.body.clientName)) {
-      res.status(400).json({
+      return res.status(400).json({
         success: false,
         reason: `client is requesting to delete game they do not have access to`,
       });
@@ -89,64 +88,62 @@ router.route("/edit").post(async (req, res) => {
   const query = { gameName: req.body.gameToEdit };
   const aGame = await Game.find({ gameName: req.body.gameToEdit });
   if (!aGame.length) {
-    res.status(400).json({ success: false, reason: "Game not found" });
-  } else {
-    if (aGame[0].creators && !aGame[0].creators.includes(req.body.clientName)) {
-      res.status(400).json({
-        success: false,
-        reason: `client is requesting to edit a game they do not have access to`,
-      });
-    }
-
-    const gameName = req.body.name;
-    const minPlayers = req.body.min;
-    const maxPlayers = req.body.max;
-    const isReocurring = req.body.reocurring;
-    let creator = [];
-    aGame[0].creators.forEach((elem) => {
-      creator.push(elem);
-    });
-
-    const newGame = new Game({
-      gameName: gameName,
-      minimumPlayers: minPlayers,
-      maximumPlayers: maxPlayers,
-      creators: creator,
-      reocurring: isReocurring,
-      dateCreated: Date.now(),
-    });
-    newGame
-      .save()
-      .then(() =>
-        console.log(`Game: ${req.body.gameToEdit} edited to ${req.body.name}.`)
-      )
-      .then(() => res.status(200).send(`Game: ${req.body.name} added.`))
-      .catch((err) =>
-        res.status(400).json({ Error: err, Game: req.body.name })
-      );
-
-    Game.deleteOne(query, (err, result) => {
-      if (err) {
-        res.send(
-          `Error when attempting to delete game: ${req.body.gameToEdit}\nError: ${err}`
-        );
-      }
+    return res.status(400).json({ success: false, reason: "Game not found" });
+  }
+  if (aGame[0].creators && !aGame[0].creators.includes(req.body.clientName)) {
+    return res.status(400).json({
+      success: false,
+      reason: `client is requesting to edit a game they do not have access to`,
     });
   }
+
+  const gameName = req.body.name;
+  const minPlayers = req.body.min;
+  const maxPlayers = req.body.max;
+  const isReocurring = req.body.reocurring;
+  let creator = [];
+  aGame[0].creators.forEach((elem) => {
+    creator.push(elem);
+  });
+
+  const newGame = new Game({
+    gameName: gameName,
+    minimumPlayers: minPlayers,
+    maximumPlayers: maxPlayers,
+    creators: creator,
+    reocurring: isReocurring,
+    dateCreated: Date.now(),
+  });
+  newGame
+    .save()
+    .then(() =>
+      console.log(`Game: ${req.body.gameToEdit} edited to ${req.body.name}.`)
+    )
+    .then(() => res.status(200).send(`Game: ${req.body.name} added.`))
+    .catch((err) => res.status(400).json({ Error: err, Game: req.body.name }));
+
+  Game.deleteOne(query, (err, result) => {
+    if (err) {
+      res.send(
+        `Error when attempting to delete game: ${req.body.gameToEdit}\nError: ${err}`
+      );
+    }
+  });
 });
 
 router.route("/addAuthor").post(async (req, res) => {
   const aGame = await Game.find({ name: req.body.name });
 
   if (!aGame.length) {
-    res.status(400).json({ success: false, reason: "Game not found" });
+    return res.status(400).json({ success: false, reason: "Game not found" });
   }
   if (!aGame[0].creators.includes(req.body.clientName)) {
-    res.status(400).json({
+    return res.status(400).json({
       success: false,
       reason: `client is requesting to add an author to a game they do not have access to`,
     });
   }
+
   aGame[0].creators.push(req.body.newCreator);
   aGame[0]
     .save()

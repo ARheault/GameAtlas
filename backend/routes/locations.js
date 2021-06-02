@@ -13,26 +13,27 @@ router.route("/add").post(async (req, res) => {
   const aLocation = await Location.find({ username: req.body.name });
   if (aLocation.length > 0) {
     console.log("Location already exists.");
-    res.status(406).json({ success: false, reason: "Location already exists" });
-  } else {
-    const locationName = req.body.name;
-    const locationAddress = req.body.address;
-    const creator = req.body.creator;
-
-    const newLocation = new Location({
-      name: locationName,
-      address: locationAddress,
-      creators: creator,
-      dateCreated: Date.now(),
-    });
-    newLocation
-      .save()
-      .then(() => console.log(`Location: ${req.body.name} added.`))
-      .then(() => res.status(200).send(`Location: ${req.body.name} added.`))
-      .catch((err) =>
-        res.status(400).json({ Error: err, Location: req.body.name })
-      );
+    return res
+      .status(406)
+      .json({ success: false, reason: "Location already exists" });
   }
+  const locationName = req.body.name;
+  const locationAddress = req.body.address;
+  const creator = req.body.creator;
+
+  const newLocation = new Location({
+    name: locationName,
+    address: locationAddress,
+    creators: creator,
+    dateCreated: Date.now(),
+  });
+  newLocation
+    .save()
+    .then(() => console.log(`Location: ${req.body.name} added.`))
+    .then(() => res.status(200).send(`Location: ${req.body.name} added.`))
+    .catch((err) =>
+      res.status(400).json({ Error: err, Location: req.body.name })
+    );
 });
 
 router.route("/delete").post(async (req, res) => {
@@ -44,9 +45,7 @@ router.route("/delete").post(async (req, res) => {
 
     Location.deleteOne(query, (err, result) => {
       if (err) {
-        res.send(
-          `Error when attempting to delete user: ${req.body.name}\nError: ${err}`
-        );
+        return res.json({ Error: err });
       } else {
         res.status(200).json({ success: true, locationDeleted: req.body.name });
       }
@@ -77,8 +76,35 @@ router.route("/findLocation:id").get(async (req, res) => {
   }
 });
 
-router.route("/addGame").post((req, res) => {
-  console.log("add a game to a location based on request.");
+router.route("/addGame").post(async (req, res) => {
+  const aLocation = await Location.find({ name: req.body.name });
+
+  if (aLocation.length) {
+    if (aLocation[0].games.includes(req.body.newGame)) {
+      return res.status(400).json({
+        success: false,
+        reason: `Game ${req.body.newGame} already exists in this location`,
+      });
+    }
+    aLocation[0].games.push(req.body.newGame);
+    ++aLocation[0].numGames;
+    aLocation[0]
+      .save()
+      .then(() =>
+        console.log(
+          `Location ${req.body.name} saved new game ${req.body.newGame}`
+        )
+      )
+      .then(() =>
+        res.status(200).json({
+          Location: req.body.name,
+          gameAdded: req.body.newGame,
+        })
+      )
+      .catch((err) =>
+        res.status(400).json({ Error: err, Location: req.body.name })
+      );
+  }
 });
 
 router.route("/deleteGame").post(async (req, res) => {
@@ -86,11 +112,13 @@ router.route("/deleteGame").post(async (req, res) => {
 
   // Make sure location exists
   if (!aLocation.length) {
-    res.status(400).json({ success: false, reason: "Location not found" });
+    return res
+      .status(400)
+      .json({ success: false, reason: "Location not found" });
   }
   // Check if game we want to delete is in this location
   if (!aLocation[0].games.includes(req.body.gameToDelete)) {
-    res
+    return res
       .status(400)
       .json({ success: false, reason: "Game not found in location" });
   }
@@ -143,6 +171,12 @@ router.route("/addAuthor").post(async (req, res) => {
   const aLocation = await Location.find({ name: req.body.name });
 
   if (aLocation.length) {
+    if (aLocation[0].games.includes(req.body.newCreator)) {
+      return res.status(400).json({
+        success: false,
+        reason: `Creator ${req.body.newCreator} already exists in this location`,
+      });
+    }
     aLocation[0].creators.push(req.body.newCreator);
     aLocation[0]
       .save()
