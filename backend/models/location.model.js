@@ -1,5 +1,5 @@
 const mongoose = require("mongoose");
-const Game = require("./game.model");
+const GameSchema = require("./game.model");
 const Schema = mongoose.Schema;
 
 const Location = new Schema(
@@ -14,8 +14,7 @@ const Location = new Schema(
     },
     games: [
       {
-        type: Game,
-        required: true,
+        type: String,
       },
     ],
     numGames: {
