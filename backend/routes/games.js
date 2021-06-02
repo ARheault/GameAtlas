@@ -81,8 +81,28 @@ router.route("/edit").post((req, res) => {
   console.log("Edit a game based on request.");
 });
 
-router.route("/addAuthor").post((req, res) => {
-  console.log("Add an author to a game");
+router.route("/addAuthor").post(async (req, res) => {
+  const aGame = await Game.find({ name: req.body.name });
+
+  if (aGame.length) {
+    aGame[0].creators.push(req.body.newCreator);
+    aGame[0]
+      .save()
+      .then(() =>
+        console.log(
+          `Game ${req.body.name} saved new creator ${req.body.newCreator}`
+        )
+      )
+      .then(() =>
+        res.status(200).json({
+          Game: req.body.name,
+          creatorAdded: req.body.newCreator,
+        })
+      )
+      .catch((err) =>
+        res.status(400).json({ Error: err, Game: req.body.name })
+      );
+  }
 });
 
 module.exports = router;
