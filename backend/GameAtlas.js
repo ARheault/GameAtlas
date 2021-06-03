@@ -22,18 +22,24 @@ connection.once("open", () => {
 });
 
 app.get("/", (req, res) => {
-  console.log("\nHomepage request\n");
   res.sendFile(path.join(__dirname, "..\\public\\index.html"));
 });
 
-app.get("/about", (req, res) => {
-  console.log("\nabout request\n");
-  res.sendFile(path.join(__dirname, "..\\public\\about.html"));
+app.get("/register", (req, res) => {
+  res.sendFile(path.join(__dirname, "..\\public\\register.html"));
 });
 
-app.get("/map", (req, res) => {
+app.get("/login", (req, res) => {
+  res.sendFile(path.join(__dirname, "..\\public\\login.html"));
+});
+
+app.get("/addGame", (req, res) => {
   console.log("\nmap request\n");
-  res.sendFile(path.join(__dirname, "..\\public\\map.html"));
+  res.sendFile(path.join(__dirname, "..\\public\\addGame.html"));
+});
+
+app.get("/addLocation", (req, res) => {
+  res.sendFile(path.join(__dirname, "..\\public\\addGame.html"));
 });
 
 // Set user router variables
