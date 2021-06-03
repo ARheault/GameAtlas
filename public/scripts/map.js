@@ -31,3 +31,5 @@ function initMap() {
   const map = new google.maps.Map(mapDiv, mapOptions);
   return map;
 }
+
+
