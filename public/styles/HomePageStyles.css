@@ -1,3 +1,55 @@
+:root {
+  --peach: #ffb997;
+  --pink: #f67e7d;
+  --lightpurple: #843b62;
+  --purple: #621940;
+  --darkblue: #0b032d;
+}
+
+body {
+  background-color: var(--darkblue);
+}
+
 h1 {
+  text-transform: capitalize;
   text-align: center;
+  color: var(--lightpurple);
+  border: 5px solid var(--purple);
+  background-color: var(--peach);
+}
+
+nav {
+  font-size: 0;
+}
+
+nav a {
+  font-size: 32px;
+  color: var(--lightpurple);
+}
+
+nav a:visited {
+  color: var(--lightpurple);
+}
+
+nav a:hover {
+  color: var(--pink);
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  border: 5px solid var(--purple);
+  width: 20%;
+  text-align: center;
+  background-color: var(--peach);
+}
+
+#map {
+  height: 800px;
+  width: 100%;
 }
