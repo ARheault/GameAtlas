@@ -6,6 +6,20 @@ function runMap() {
   console.log("map api loaded");
 
   const map = initMap();
+  const autocomplete = initAutocomplete();
+
+
+
+  autocomplete.addListener("place_changed", () => {
+    const loc = autocomplete.getPlace();
+    console.log(loc);
+    Location.name = loc.name
+    Location.address = loc.formatted_address;
+
+    placeMarker(Location.address, map);
+   })
+
+
 }
 
 function loadMapAPI() {
@@ -30,19 +44,6 @@ function initMap() {
   const mapDiv = document.getElementById("map");
   const map = new google.maps.Map(mapDiv, mapOptions);
 
-  //getting location data for markers
-  // const input = document.getElementById("autocomplete");
-  // const biasInputElement = document.getElementById("use-location-bias");
-  // const options = {
-  //   componentRestrictions: { country: 'us'},
-  //    types: ['establishment'],
-  //    fields: ['formatted_address', 'geomentry', 'name'],
-  //    stricBounds: false,
-  //  };
-  //  const autocomplete = new google.maps.places.Autocomplete(input, options);
-
-  autocomplete = initAutocomplete();
-
   return map;
 }
 
@@ -58,23 +59,43 @@ function initAutocomplete(){
      stricBounds: false,
    };
    const autocomplete = new google.maps.places.Autocomplete(input, options);
-   var geocoder = new google.maps.Geocoder();
+   //const geocoder = new google.maps.Geocoder();
 
-   autocomplete.addListener("place_changed", () => {
-    const loc = autocomplete.getPlace();
-    console.log(loc);
-    Location.name = loc.name
-    Location.address = loc.formatted_address;
-    var latLong = geocoder.geocode( { 'address' : Location.address})
-    console.log(latLong)
-   })
+  //  autocomplete.addListener("place_changed", () => {
+  //   const loc = autocomplete.getPlace();
+  //   console.log(loc);
+  //   Location.name = loc.name
+  //   Location.address = loc.formatted_address;
+  //   geocoder.geocode( { 'address' : loc.formatted_address}, function(results){
+  //     console.log(results);
+  //     var latLng = {lat: results[0].geometry.location.lat (), lng: results[0].geometry.location.lng ()};
+  //     console.log(latLng);
+  //     new google.maps.Marker({
+  //       position: latLng,
+  //       map,
+  //       title: "games here",
+  //     });
+  //   })
+  //  })
 
 
    return autocomplete;
 }
 
-function placeMarker(autocomplete){
+function placeMarker(address, map){
+  const geocoder = new google.maps.Geocoder();
+  geocoder.geocode({'address' : address}, function(results, status) {
+    console.log(results);
 
-
+    var latLng = {lat: results[0].geometry.location.lat (), lng: results[0].geometry.location.lng ()};
+    console.log(latLng);
+      new google.maps.Marker({
+        position: latLng,
+        map,
+        title: "games here",
+      });
+  })
 }
+
+
 
