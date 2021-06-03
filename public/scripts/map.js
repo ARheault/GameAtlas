@@ -58,12 +58,23 @@ function initAutocomplete(){
      stricBounds: false,
    };
    const autocomplete = new google.maps.places.Autocomplete(input, options);
+   var geocoder = new google.maps.Geocoder();
 
    autocomplete.addListener("place_changed", () => {
-     const location = autocomplete.getPlace();
-     console.log(location);
+    const loc = autocomplete.getPlace();
+    console.log(loc);
+    Location.name = loc.name
+    Location.address = loc.formatted_address;
+    var latLong = geocoder.geocode( { 'address' : Location.address})
+    console.log(latLong)
    })
 
+
    return autocomplete;
+}
+
+function placeMarker(autocomplete){
+
+
 }
 
