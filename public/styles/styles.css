@@ -49,3 +49,7 @@ body {
 .h1 {
   text-transform: capitalize;
 }
+
+form {
+  width: 400px;
+}

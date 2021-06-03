@@ -23,6 +23,7 @@ function runMap() {
 }
 
 function loadMapAPI() {
+  //var googleMapsAPIKey = 'AIzaSyB59vHct6anMCVbOdNWxgrMSngYSTazRco'
   var googleMapsAPIKey = config.API_KEY;
   const googleMapsAPIURL = `https://maps.googleapis.com/maps/api/js?key=${googleMapsAPIKey}&callback=runMap&libraries=places`;
 
@@ -56,28 +57,9 @@ function initAutocomplete(){
     componentRestrictions: { country: 'us'},
      types: ['establishment'],
      fields: ['formatted_address', 'geometry', 'name'],
-     stricBounds: false,
+     strictBounds: false,
    };
    const autocomplete = new google.maps.places.Autocomplete(input, options);
-   //const geocoder = new google.maps.Geocoder();
-
-  //  autocomplete.addListener("place_changed", () => {
-  //   const loc = autocomplete.getPlace();
-  //   console.log(loc);
-  //   Location.name = loc.name
-  //   Location.address = loc.formatted_address;
-  //   geocoder.geocode( { 'address' : loc.formatted_address}, function(results){
-  //     console.log(results);
-  //     var latLng = {lat: results[0].geometry.location.lat (), lng: results[0].geometry.location.lng ()};
-  //     console.log(latLng);
-  //     new google.maps.Marker({
-  //       position: latLng,
-  //       map,
-  //       title: "games here",
-  //     });
-  //   })
-  //  })
-
 
    return autocomplete;
 }

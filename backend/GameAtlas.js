@@ -4,6 +4,7 @@ const path = require("path");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
+
 require("dotenv").config();
 
 const app = express();
@@ -41,6 +42,7 @@ app.get("/addGame", (req, res) => {
 app.get("/addLocation", (req, res) => {
   res.sendFile(path.join(__dirname, "..\\public\\addGame.html"));
 });
+
 
 // Set user router variables
 const userRouter = require("./routes/users.js");
