@@ -34,13 +34,12 @@ app.get("/login", (req, res) => {
   res.sendFile(path.join(__dirname, "..\\public\\login.html"));
 });
 
-app.get("/addGame1", (req, res) => {
-  console.log("\nmap request\n");
+app.get("/addGame", (req, res) => {
   res.sendFile(path.join(__dirname, "..\\public\\addGame1.html"));
 });
 
 app.get("/addLocation", (req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\addGame.html"));
+  res.sendFile(path.join(__dirname, "..\\public\\addLocation.html"));
 });
 
 
