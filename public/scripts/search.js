@@ -1,35 +1,19 @@
 
-loadPlacesAPI();
+var googleMapsAPIKey = config.API_KEY;
+const googleMapsAPIURL = `https://maps.googleapis.com/maps/api/js?key=${googleMapsAPIKey}&callback=runMap&libraries=places`;
 
-function loadPlaces(){
-    console.log("places api loaded");
+const script = document.createElement("script");
+script.src = googleMapsAPIURL;
+script.defer = true;
+script.async = true;
 
-    const places = initAutocomplete();
-}
 
-function loadPlacesAPI(){
-    var googleMapsAPIKey = config.API_KEY;
-    const placesAPIURL = `https://maps.googleapis.com/maps/api/js?key=${googleMapsAPIKey}&libraries=places&callback=initAutocomplete`;
-
-    const script = document.createElement("script");
-    script.src = placesAPIURL;
-    script.defer = true;
-    script.async = true;
-
-    window.loadPlaces = loadPlacesl
-
-    document.head.appendChild(script);
-}
-
-function initAutocomplete() {
-    const placesDiv = document.getElementById("autocomplete");
-    const autocomplete = new.google.maps.places.Autocomplete(placesDiv,
-    {
-        types: ['establishment'],
-        componentRestrictions: {'country': ['USA']},
-        fields: ['place_id', 'geometry', 'name']
-    });
-
-  return autocomplete
-
-}
+const input = document.getElementById("autocomplete");
+  const biasInputElement = document.getElementById("use-location-bias");
+  const options = {
+    componentRestrictions: { country: 'us'},
+     types: ['establishment'],
+     fields: ['formatted_address', 'geometry', 'name'],
+     strictBounds: false,
+   };
+   const autocomplete = new google.maps.places.Autocomplete(input, options);

@@ -4,6 +4,7 @@ const path = require("path");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
+
 require("dotenv").config();
 
 const app = express();
@@ -35,6 +36,7 @@ app.get("/map", (req, res) => {
   console.log("\nmap request\n");
   res.sendFile(path.join(__dirname, "..\\public\\map.html"));
 });
+
 
 // Set user router variables
 const userRouter = require("./routes/users.js");
