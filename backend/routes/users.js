@@ -28,12 +28,13 @@ router.route("/").get(async (req, res) => {
  * @reason a string value that indicates the reason the user was not able to login, can be used for front end debuggging
  */
 router.route("/login").post(async (req, res) => {
+  console.log(req.body);
   const aUser = await User.find({ username: req.body.username });
   if (aUser.length < 1) {
     console.log("User does not exist.");
     res.status(406).json({ authenticated: false, reason: "User not found" });
   } else {
-    if (aUser[0].password === req.body.password) {
+    if (aUser[0].password !== req.body.password) {
       console.log(
         `User: ${req.body.username}\n bad password: ${req.body.password}`
       );
