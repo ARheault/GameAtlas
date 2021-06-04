@@ -1,4 +1,32 @@
 li {
-    width: 50%;
-  }
-  
+  width: 50%;
+}
+
+#game {
+  display: inline-block;
+  vertical-align: top;
+  height: 285px;
+  min-height: auto;
+  width: 25%;
+  text-transform: capitalize;
+  text-align: center;
+  color: var(--mint);
+  border: 5px solid var(--lightblue);
+  border-radius: 5px;
+  background-color: whitesmoke;
+}
+
+#game > p {
+  margin: auto;
+  padding-bottom: 5px;
+  border-bottom: 5px solid var(--lightblue);
+}
+
+#pageIntent {
+  width: 100%;
+  background-color: whitesmoke;
+  text-align: center;
+  border: 5px solid var(--lightblue);
+  margin: 0;
+  color: var(--mint);
+}
