@@ -1,6 +1,5 @@
 const url = "http://localhost:5000/Games/";
 let results = document.querySelector("#games");
-
 let getData = (url) => {
   fetch(url)
     .then((response) => {
