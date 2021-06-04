@@ -1,3 +1,13 @@
+:root {
+  --pink: #ffd1dc;
+  --peach: #f9ddd2;
+  --orange: #e2725a;
+  --blue: #4a6274;
+  --lightblue: #94acbf;
+  --mint: #79aeb2;
+  --orange: #E2725A;
+}
+
 .topnav {
   height: 45px;
   margin: 0px;
@@ -52,4 +62,55 @@ body {
 
 form {
   width: 400px;
+}
+
+body {
+  background-color: var(--blue);
+}
+
+h1 {
+  text-transform: capitalize;
+  text-align: center;
+  color: var(--mint);
+  border: 5px solid var(--lightblue);
+  background-color: whitesmoke;
+}
+
+nav {
+  font-size: 0;
+}
+
+nav a {
+  font-size: 32px;
+  color: var(--mint);
+}
+
+nav a:visited {
+  color: var(--pink);
+}
+
+nav a:hover {
+  color: var(--pink);
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+li {
+  display: inline-block;
+  border: 5px solid var(--lightblue);
+  text-align: center;
+  background-color: whitesmoke;
+}
+
+#map {
+  height: 75vh;
+  width: 100%;
+}
+
+.header {
+  background-color: var(--lightblue);
 }
