@@ -132,9 +132,10 @@ router.route("/edit").post(async (req, res) => {
 });
 
 router.route("/addAuthor").post(async (req, res) => {
-  const aGame = await Game.find({ name: req.body.name });
+  const aGame = await Game.find({ gameName: req.body.name });
 
   if (!aGame.length) {
+    console.log(aGame);
     return res.status(400).json({ success: false, reason: "Game not found" });
   }
   if (!aGame[0].creators.includes(req.body.clientName)) {
