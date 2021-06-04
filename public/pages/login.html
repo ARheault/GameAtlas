@@ -10,7 +10,8 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
     />
    <link rel="stylesheet" href="../styles/styles.css" />
-    <link rel="stylesheet" href="../styles/login.css" />
+   <link rel="stylesheet" href="../styles/login.css" />
+   <script defer src="../scripts/login.js"></script>
   </head>
   <body>
     <main>
@@ -31,7 +32,21 @@
           </li>
         </ul>
       </nav>
-
+      <form id="loginForm">
+        <h3>Login</h3>
+        <div>
+          <label for="name">Username *</label>
+          <input type="name" id="name" required="required" />
+        </div>
+        <div>
+          <label for="password">Password *</label>
+          <input type="password" id="password" required="required" />
+        </div>
+        <div id="buttons">
+          <button type="submit" id="submit" alt="Submit Button">Login</button>
+          <button type="reset" id="reset" alt="Reset Button">Reset</button>
+        </div>
+      </form>
     </main>
   </body>
 </htmk>
