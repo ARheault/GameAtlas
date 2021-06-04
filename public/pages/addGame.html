@@ -10,6 +10,7 @@
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
     />
     <link rel="stylesheet" href="../styles/addGame.css" />
+    <script src="../config.js"></script>
   </head>
   <body>
     <main>
@@ -33,7 +34,60 @@
           </li>
         </ul>
       </nav>
+      <div class="container mx-auto mt-4">
+        <form class="bg-light border rounded mx-auto p-4">
+          <div class="form-group">
+            <h2 class="text-center">Add a game to the Atlas</h2>
+          </div>          
+          <div class="form-group">
+            <label for="gameName">What game are you adding? *</label>
+            <input 
+              type="gameName"
+              class="form-control"
+              id="name"
+              required
+              />
+          </div> </br>
 
+          <div class="form-group">
+            <label for="location">Location*</label>
+            <input
+              type="location"
+              class="form-control"
+              id="autocomplete"
+              required
+              /> <br>
+
+          <!-- <div class="form-check">
+            <input type="checkbox" class="form-check-input" id="recurring" />
+            <label class="form-check-label" for="recurring">Is this a recurring event?</label>            
+          </div> <br> -->
+
+          <!-- <select class="form-select" id="day" disabled>
+            <label for="day">Day of the week</label>
+            <option selected>Day of the week</option>
+            <option value="sunday">Sunday</option>
+            <option value="monday">Monday</option>
+            <option value="tuesday">Tuesday</option>
+            <option value="wednesday">Wednesday</option>
+            <option value="thursday">Thursday</option>
+            <option value="friday">friday</option>
+            <option value="saturday">Saturday</option>
+          </select> </br> <br> -->
+
+          <div class="md-form md-outline">
+            <label for="time">Select Time</label>
+            <input type="time" id="time" class="form-control" placeholder="Select time" disabled>
+          </div><br><br> 
+
+          <div class="form-group mt-3 mb-0">
+            <input type="submit" class="btn btn-primary" value="Submit" />
+            <input type="reset" class="btn btn-secondary " value="Reset" />
+          </div>
+        </form>
+      </div>
+      <script src="../scripts/map.js"></script>
+      <div id="map"></div>
     </main>
   </body>
 </htmk>
