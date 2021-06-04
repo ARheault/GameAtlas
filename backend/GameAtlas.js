@@ -4,7 +4,6 @@ const path = require("path");
 const cors = require("cors");
 const mongoose = require("mongoose");
 
-
 require("dotenv").config();
 
 const app = express();
@@ -23,25 +22,32 @@ connection.once("open", () => {
 });
 
 app.get("/", (req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\index.html"));
+  res.sendFile(path.join(__dirname, "..\\public\\pages\\index.html"));
 });
 
 app.get("/register", (req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\register.html"));
+  res.sendFile(path.join(__dirname, "..\\public\\pages\\register.html"));
 });
 
 app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\login.html"));
+  res.sendFile(path.join(__dirname, "..\\public\\pages\\login.html"));
+});
+
+app.get("/game", (req, res) => {
+  res.sendFile(path.join(__dirname, "..\\public\\pages\\game.html"));
+});
+
+app.get("/location", (req, res) => {
+  res.sendFile(path.join(__dirname, "..\\public\\pages\\location.html"));
 });
 
 app.get("/addGame", (req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\addGame1.html"));
+  res.sendFile(path.join(__dirname, "..\\public\\pages\\addGame.html"));
 });
 
 app.get("/addLocation", (req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\addLocation.html"));
+  res.sendFile(path.join(__dirname, "..\\public\\pages\\addLocation.html"));
 });
-
 
 // Set user router variables
 const userRouter = require("./routes/users.js");
