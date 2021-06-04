@@ -1,3 +1,43 @@
 li {
-    width: 25%;
-  }
+  width: 25%;
+}
+
+#loginForm {
+  border: 5px solid var(--lightblue);
+  color: var(--lightblue);
+  background-color: whitesmoke;
+  margin: auto;
+  width: 50%;
+  padding-bottom: 20px;
+  padding: .5em;
+}
+
+#loginForm > h3 {
+  text-align: center;
+}
+
+#loginForm > div {
+  margin: 1em;
+}
+
+#loginForm > div > label {
+  text-align: left;
+  display: block;
+}
+
+#loginForm > div > input {
+  width: 99.5%;
+}
+
+#loginForm > div > button {
+  width: 49.5%;
+  margin-bottom: 0;
+}
+
+#loginForm > #buttons > #submit {
+  background-color: var(--lightblue);
+}
+
+#loginForm > #buttons > #reset {
+  background-color: var(--pink);
+}
