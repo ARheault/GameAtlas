@@ -6,7 +6,7 @@ li {
   display: inline-block;
   vertical-align: top;
   height: 285px;
-  min-height: auto;
+  min-height: fit-content;
   width: 25%;
   text-transform: capitalize;
   text-align: center;
