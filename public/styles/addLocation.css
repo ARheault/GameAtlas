@@ -10,7 +10,7 @@ li {
     width: 50%;
 }
 
-#gameForm {
+#locationForm {
     border: 5px solid var(--lightblue);
     color: var(--lightblue);
     background-color: whitesmoke;
@@ -20,36 +20,36 @@ li {
     padding: .5em;
   }
   
-  #gameForm > h3 {
+  #locationForm > h3 {
     text-align: center;
   }
-  
-  #gameForm > div {
+ 
+  #locationForm > div {
     margin: 1em;
   }
   
-  #gameForm > div > label {
+  #locationForm > div > label {
     text-align: left;
     display: block;
   }
 
-  #gameForm > div > label > input[type=checkbox] {
+  #locationForm > div > label > input[type=checkbox] {
     margin-left: 20px;
   }
-  #gameForm > div > input {
+  #locationForm > div > input {
     width: 99.5%;
   }
   
-  #gameForm > div > button {
+  #locationForm > div > button {
     width: 49.5%;
     margin-bottom: 0;
   }
   
-  #gameForm > #buttons > #submit {
+  #locationForm > #buttons > #submit {
     background-color: var(--lightblue);
   }
   
-  #gameForm > #buttons > #reset {
+  #locationForm > #buttons > #reset {
     background-color: var(--pink);
   }
 

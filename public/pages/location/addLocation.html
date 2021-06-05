@@ -9,7 +9,9 @@
       type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
     />
+    <link rel="stylesheet" href="../../styles/styles.css" />
     <link rel="stylesheet" href="../../styles/addLocation.css" />
+    <script defer src="../../scripts/location/addLocationForm.js"></script>
   </head>
   <body>
     <main>
@@ -17,23 +19,18 @@
       <nav>
         <ul>
           <li>
-            <a href="../">Home</a>
+            <a href="/">Home</a>
           </li>
           <li>
-            <a href="/login">Login</a>
-          </li>
-          <li>
-            <a href="/register">Register</a>
+            <a href="/findLocation">Find Location</a>
           </li>
           <li>
             <a href="/addGame">Add Game</a>
           </li>
-          <li>
-            <a href="/findLocation">Add Location</a>
-          </li>
         </ul>
+      <div id="placement"></div>
+      <script defer src="../../scripts/location/addLocation.js"></script>
       </nav>
-
     </main>
   </body>
 </html>

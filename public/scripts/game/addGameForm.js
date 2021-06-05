@@ -13,7 +13,9 @@ allCookies.forEach((cookie) => {
 
 if (formattedCookies["username"] === undefined) {
   let filler = document.createElement("li");
+  filler.setAttribute("class", "putTop");
   let filler1 = document.createElement("li");
+  filler1.setAttribute("class", "putTop");
 
   placement.append(filler);
 
