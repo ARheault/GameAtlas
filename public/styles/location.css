@@ -1,11 +1,12 @@
 li {
-  width: 50%;
+  width: 33.33%;
+  min-width: fit-content;
 }
 
 #location {
   display: inline-block;
   vertical-align: top;
-  height: 290px;
+  height: 320px;
   min-height: auto;
   width: 25%;
   text-transform: capitalize;

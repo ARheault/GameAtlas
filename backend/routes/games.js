@@ -34,7 +34,7 @@ router.route("/add").post(async (req, res) => {
   newGame
     .save()
     .then(() => console.log(`Game: ${req.body.name} added.`))
-    .then(() => res.status(200).send(`Game: ${req.body.name} added.`))
+    .then(() => res.status(200).json({ success: true }))
     .catch((err) => res.status(400).json({ Error: err, Game: req.body.name }));
 });
 

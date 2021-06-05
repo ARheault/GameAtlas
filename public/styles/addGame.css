@@ -1,0 +1,57 @@
+li {
+    width: 33.3%;
+}
+
+#loggedIn > li {
+    width: 25%;
+    vertical-align: top;
+}
+
+#loggedIn > #link {
+    width: 50%;
+}
+
+#gameForm {
+    border: 5px solid var(--lightblue);
+    color: var(--lightblue);
+    background-color: whitesmoke;
+    margin: auto;
+    width: 50%;
+    padding-bottom: 20px;
+    padding: .5em;
+  }
+  
+  #gameForm > h3 {
+    text-align: center;
+  }
+  
+  #gameForm > div {
+    margin: 1em;
+  }
+  
+  #gameForm > div > label {
+    text-align: left;
+    display: block;
+  }
+
+  #gameForm > div > label > input[type=checkbox] {
+    margin-left: 20px;
+  }
+  #gameForm > div > input {
+    width: 99.5%;
+  }
+  
+  #gameForm > div > button {
+    width: 49.5%;
+    margin-bottom: 0;
+  }
+  
+  #gameForm > #buttons > #submit {
+    background-color: var(--lightblue);
+  }
+  
+  #gameForm > #buttons > #reset {
+    background-color: var(--pink);
+  }
+
+  

@@ -1,13 +1,13 @@
-console.log("This is being called");
-
+// I cannot figure out how to import this into other files!
 let allCookies = document.cookie;
 allCookies = allCookies.split("; ");
 let formattedCookies = {};
 allCookies.forEach((cookie) => {
   let aCookie = cookie.split("=");
   formattedCookies[aCookie[0]] = aCookie[1];
+  console.log(
+    `New Cookie Key: ${aCookie[0]} value: ${formattedCookies[aCookie[0]]}`
+  );
 });
 
-if(formattedCookies.authenticated && formattedCookies.authenticated === "true"){
-     window.location.href = "http://localhost:5000/";
-}
+export {formattedCookies};
