@@ -1,5 +1,19 @@
 const url = "http://localhost:5000/Games/findGame";
 
+
+let allCookies = document.cookie;
+allCookies = allCookies.split("; ");
+let formattedCookies = {};
+allCookies.forEach((cookie) => {
+  let aCookie = cookie.split("=");
+  formattedCookies[aCookie[0]] = aCookie[1];
+});
+
+if (formattedCookies["username"] === undefined) {
+  window.location.href = "http://localhost:5000/login";
+  alert("Please login if you'd like to search for a game");
+}
+
 async function handleSubmit(event) {
   event.preventDefault();
   const name = document.querySelector("#gameToFind").value;

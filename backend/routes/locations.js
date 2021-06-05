@@ -10,7 +10,7 @@ router.route("/").get((req, res) => {
 
 router.route("/add").post(async (req, res) => {
   // First make sure the location isn't attempting to add a location with a duplicate name
-  const aLocation = await Location.find({ username: req.body.name });
+  const aLocation = await Location.find({ name: req.body.name });
   if (aLocation.length > 0) {
     console.log("Location already exists.");
     return res

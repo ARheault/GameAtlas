@@ -1,5 +1,3 @@
-console.log("This is being called");
-
 let allCookies = document.cookie;
 allCookies = allCookies.split("; ");
 let formattedCookies = {};
@@ -10,4 +8,5 @@ allCookies.forEach((cookie) => {
 
 if(formattedCookies.authenticated && formattedCookies.authenticated === "true"){
      window.location.href = "http://localhost:5000/";
+     alert("You are already logged in");
 }

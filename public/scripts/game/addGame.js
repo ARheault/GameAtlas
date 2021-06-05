@@ -33,9 +33,15 @@ async function handleSubmit(event) {
       console.log(result);
       return result;
     })
-    .catch((err) => console.log(`Error: ${err}`));
-
-    window.location.href = "http://localhost:5000/game"
+    .catch((err) => {
+      console.log(`Error: ${err}`);
+      alert(`There was an error adding you game: ${err}`);
+    });
+  if (success.success === true) {
+    window.location.href = "http://localhost:5000/game";
+  } else {
+    alert(`Game could not be added, ${success.reason}`);
+  }
 }
 
 const form = document.getElementById("gameForm");

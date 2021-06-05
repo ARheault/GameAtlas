@@ -5,7 +5,7 @@ async function handleSubmit(event) {
   const locationName = document.querySelector("#name").value;
   const address = document.querySelector("#address").value;
 
-  console.group("=== Game Submission ===");
+  console.group("=== Location Submission ===");
   console.log(`locationName: ${locationName}`);
   console.log(`address: ${address}`);
   console.log(`Creator: ${formattedCookies.username}`);
@@ -28,8 +28,12 @@ async function handleSubmit(event) {
       return result;
     })
     .catch((err) => console.log(`Error: ${err}`));
-
-  window.location.href = "http://localhost:5000/location";
+    console.log(success);
+  if (success.success === true) {
+    window.location.href = "http://localhost:5000/location";
+  } else {
+    alert(`Location could not be added, ${success.reason}`);
+  }
 }
 
 const form = document.getElementById("locationForm");
