@@ -26,15 +26,21 @@ app.get("/", (req, res) => {
 });
 
 app.get("/register", (req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\pages\\authentification\\register.html"));
+  res.sendFile(
+    path.join(__dirname, "..\\public\\pages\\authentification\\register.html")
+  );
 });
 
 app.get("/login", (req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\pages\\authentification\\login.html"));
+  res.sendFile(
+    path.join(__dirname, "..\\public\\pages\\authentification\\login.html")
+  );
 });
 
 app.get("/logout", (req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\pages\\authentification\\logout.html"));
+  res.sendFile(
+    path.join(__dirname, "..\\public\\pages\\authentification\\logout.html")
+  );
 });
 
 app.get("/game", (req, res) => {
@@ -42,19 +48,29 @@ app.get("/game", (req, res) => {
 });
 
 app.get("/location", (req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\pages\\location\\location.html"));
+  res.sendFile(
+    path.join(__dirname, "..\\public\\pages\\location\\location.html")
+  );
 });
 
 app.get("/addGame", (req, res) => {
   res.sendFile(path.join(__dirname, "..\\public\\pages\\game\\addGame.html"));
 });
 
+app.get("/findGame", (req, res) => {
+  res.sendFile(path.join(__dirname, "..\\public\\pages\\game\\findGame.html"));
+});
+
 app.get("/addLocation", (req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\pages\\location\\addLocation.html"));
+  res.sendFile(
+    path.join(__dirname, "..\\public\\pages\\location\\addLocation.html")
+  );
 });
 
 app.get("/findLocation", (req, res) => {
-  res.sendFile(path.join(__dirname, "..\\public\\pages\\location\\findLocation.html"));
+  res.sendFile(
+    path.join(__dirname, "..\\public\\pages\\location\\findLocation.html")
+  );
 });
 
 // Set user router variables

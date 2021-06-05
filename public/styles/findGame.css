@@ -1,0 +1,83 @@
+li {
+    width: 33.33%;
+  }
+  
+  #findGameForm {
+    border: 5px solid var(--lightblue);
+    color: var(--lightblue);
+    background-color: whitesmoke;
+    margin: auto;
+    width: 50%;
+    padding-bottom: 20px;
+    padding: 0.5em;
+  }
+  
+  #findGameForm > h3 {
+    text-align: center;
+  }
+  
+  #findGameForm > div {
+    margin: 1em;
+  }
+  
+  #findGameForm > div > label {
+    text-align: left;
+    display: block;
+  }
+  
+  #findGameForm > div > input {
+    width: 99.5%;
+  }
+  
+  #findGameForm > div > button {
+    width: 49.5%;
+    margin-bottom: 0;
+  }
+  
+  #findGameForm > .buttons > #submit {
+    background-color: var(--lightblue);
+  }
+  
+  #submitGame {
+    background-color: var(--lightblue);
+    width: 99%;
+  }
+  
+  #findGameForm > .buttons > #reset {
+    background-color: var(--pink);
+  }
+  
+  #game {
+    margin: auto;
+    display: block;
+    vertical-align: top;
+    overflow: auto;
+    height: 320px;
+    min-height: fit-content;
+    width: 50%;
+    text-transform: capitalize;
+    text-align: center;
+    color: var(--mint);
+    border: 5px solid var(--lightblue);
+    border-radius: 5px;
+    background-color: whitesmoke;
+  }
+  
+  #game > p {
+    margin: auto;
+    padding-bottom: 5px;
+    border-bottom: 5px solid var(--lightblue);
+  }
+  
+  #game > label {
+    display: inline-block;
+  }
+  
+  #inputGame {
+    display: inline-block;
+    margin-left: 20px;
+  }
+  
+  #game > div {
+    padding-top: 20px;
+  }

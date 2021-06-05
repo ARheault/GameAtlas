@@ -19,6 +19,7 @@ async function handleSubmit(event) {
     .catch((err) => console.log(`Error: ${err}`));
 
   if (serverResponse.success !== true) {
+    alert("that game does not exist! check your spelling!");
     return;
   }
   let theLocation = serverResponse.location;
@@ -29,7 +30,7 @@ async function handleSubmit(event) {
 
   let aName = document.createElement("p");
   aName.setAttribute("id", "nameOfLocation");
-  aName.innerHTML = "Name: " + theLocation.name;
+  aName.innerHTML = "Name of Location: " + theLocation.name;
 
   let anAddress = document.createElement("p");
   anAddress.innerHTML = "Address: " + theLocation.address;

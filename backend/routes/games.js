@@ -69,7 +69,7 @@ router.route("/delete").post(async (req, res) => {
 router.route("/findGame").post(async (req, res) => {
   const aGame = await Game.find({ gameName: req.body.name });
   if (aGame.length) {
-    res.status(200).json({ suceess: true, game: aGame[0] });
+    res.status(200).json({ success: true, game: aGame[0] });
   } else {
     res.status(400).json({ success: false, reason: "Game not found" });
   }

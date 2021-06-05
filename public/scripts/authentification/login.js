@@ -18,17 +18,18 @@ async function handleSubmit(event) {
       return result.authenticated;
     })
     .catch((err) => console.log(`Error: ${err}`));
-  console.log(authenticated);
-  console.log(typeof authenticated);
   if (
     typeof authenticated !== undefined &&
     authenticated !== null &&
     authenticated === true
   ) {
     // Implement cookie..
-    document.cookie = `username=${username}`;
-    document.cookie = `authenticated=true`;
+    document.cookie = `username=${username};`;
+    document.cookie = `authenticated=true;`;
+    document.cookie = `JustLoggedIn=true;`;
     window.location.href = "http://localhost:5000/";
+  } else {
+    alert("Login failed! Check your spelling.");
   }
 }
 
