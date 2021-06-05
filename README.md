@@ -8,6 +8,12 @@ The frontend file strucuture holds the html pages in the [pages](https://github.
 The backend structure is similar in that it takes a modular approach and is split into subdirectories that contain the [data models](https://github.com/ARheault/GameAtlas/tree/development/backend/models), the [routes](https://github.com/ARheault/GameAtlas/tree/development/backend/routes) that control the actiaons that can be taken on those models and abstract them from the front end, and finally the [server file](https://github.com/ARheault/GameAtlas/blob/development/backend/GameAtlas.js) where these are linked and connected to the front end.
 
 
+To run this code it will be assumed that you have node and npm (node package manager) installed. If you do not I recommend [this guide for windows](https://phoenixnap.com/kb/install-node-js-npm-on-windows) as well as [this guide for mac](https://treehouse.github.io/installation-guides/mac/node-mac.html) as it is an easy way to get set up and finally [this guide for linux users](https://linuxize.com/post/how-to-install-node-js-on-ubuntu-18.04/).
+
+
+Running this application requires an API key as well as me whitelisting you on my database! Reach out to me at alexdrhlt@gmail.com and I will provide both!
+
+
 This explanation will use Visual Studio Code for examples, to use a different IDE or development enviornment these steps will need to be adapted to your situation.
 To the run this application locally you must first clone onto your local machine using the following list of commands at the command line:
 
@@ -60,5 +66,15 @@ If you've done this correctly your screen should look like this:
 
 ![image](https://user-images.githubusercontent.com/71666828/120891613-5f675e00-c5be-11eb-8250-72412a46e5c4.png)
 
-Click on public and then click on the add file button
+Click on public and then click on the add file button naming it config.js
 
+![image](https://user-images.githubusercontent.com/71666828/120891665-989fce00-c5be-11eb-9ca5-3ba43fa94b8b.png)
+
+If you reached out to me, you will have the contents that need to go into this file, otherwise please reach out I will provide the keys I just don't want them to be publicly shared!
+
+If you have done this correctly you should now be able to navigate your terminal to the backend folder and type "node GameAtlas.js" to start the server!
+
+
+![image](https://user-images.githubusercontent.com/71666828/120891755-149a1600-c5bf-11eb-8f65-2ee1529acce3.png)
+
+If you have an issues please reach out and I will try to help! If you want to contribute or have any questions also feel free to reach out!
