@@ -53,6 +53,10 @@ app.get("/addLocation", (req, res) => {
   res.sendFile(path.join(__dirname, "..\\public\\pages\\location\\addLocation.html"));
 });
 
+app.get("/findLocation", (req, res) => {
+  res.sendFile(path.join(__dirname, "..\\public\\pages\\location\\findLocation.html"));
+});
+
 // Set user router variables
 const userRouter = require("./routes/users.js");
 const locationRouter = require("./routes/locations.js");

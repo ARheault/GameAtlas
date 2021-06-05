@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Homepage</title>
+    <link
+      rel="stylesheet"
+      type="text/css"
+      href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
+    />
+    <link rel="stylesheet" href="../../styles/styles.css" />
+    <link rel="stylesheet" href="../../styles/findLocation.css" />
+  </head>
+  <body>
+    <main>
+      <h1>GameAtlas</h1>
+      <nav>
+        <ul>
+          <li>
+            <a href="/">Home</a>
+          </li>
+          <li>
+            <a href="/location">Location</a>
+          </li>
+          <li>
+            <a href="/addLocation">Add Location</a>
+          </li>
+        </ul>
+      </nav>
+      <form id="findLocationForm">
+        <div>
+          <label for="locationToFind">Location to Find *</label>
+          <input type="location" id="locationToFind" required="required" />
+        </div>
+        <div id="buttons">
+          <button type="submit" id="submit" alt="Submit Button">Search</button>
+          <button type="reset" id="reset" alt="Reset Button">Reset</button>
+        </div>
+        <script defer src="../../scripts/location/findLocation.js"></script>
+      </form>
+      <div id="placement"></div>
+    </main>
+  </body>
+</html>

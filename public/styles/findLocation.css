@@ -1,0 +1,64 @@
+li {
+    width: 33.33%;
+}
+
+#findLocationForm {
+    border: 5px solid var(--lightblue);
+    color: var(--lightblue);
+    background-color: whitesmoke;
+    margin: auto;
+    width: 50%;
+    padding-bottom: 20px;
+    padding: .5em;
+  }
+  
+  #findLocationForm > h3 {
+    text-align: center;
+  }
+  
+  #findLocationForm > div {
+    margin: 1em;
+  }
+  
+  #findLocationForm > div > label {
+    text-align: left;
+    display: block;
+  }
+
+  #findLocationForm > div > input {
+    width: 99.5%;
+  }
+  
+  #findLocationForm > div > button {
+    width: 49.5%;
+    margin-bottom: 0;
+  }
+  
+  #findLocationForm > #buttons > #submit {
+    background-color: var(--lightblue);
+  }
+  
+  #findLocationForm > #buttons > #reset {
+    background-color: var(--pink);
+  }
+
+  #location {
+    margin: auto;
+    display: block;
+    vertical-align: top;
+    height: 320px;
+    min-height: fit-content;
+    width: 25%;
+    text-transform: capitalize;
+    text-align: center;
+    color: var(--mint);
+    border: 5px solid var(--lightblue);
+    border-radius: 5px;
+    background-color: whitesmoke;
+  }
+  
+  #location > p {
+    margin: auto;
+    padding-bottom: 5px;
+    border-bottom: 5px solid var(--lightblue);
+  }
