@@ -19,8 +19,12 @@ async function handleSubmit(event) {
     })
     .catch((err) => console.log(`Error: ${err}`));
   console.log(authenticated);
-  console.log(typeof(authenticated));
-  if (authenticated === true) {
+  console.log(typeof authenticated);
+  if (
+    typeof authenticated !== undefined &&
+    authenticated !== null &&
+    authenticated === true
+  ) {
     // Implement cookie..
     document.cookie = `username=${username}`;
     document.cookie = `authenticated=true`;

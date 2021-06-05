@@ -61,7 +61,7 @@ router.route("/add").post(async (req, res) => {
   } else {
     const username = req.body.username;
     const password = req.body.password;
-    const date = Date.parse(req.body.date);
+    const date = Date.now();
     let homeLocation = "";
 
     // Logic to filter for optional field homeLocation
