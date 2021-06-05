@@ -16,25 +16,57 @@ let getData = (url) => {
         headline.setAttribute("id", "pageIntent");
         results.append(headline);
       data.forEach((location) => {
-        console.log(location.maximumPlayers);
+      
         let elem = document.createElement("div");
         elem.setAttribute("id", "location");
-        let textArea = `<p>name: ${location.name}</p><p>address: ${location.address}</p><p>number of games: ${location.numGames}</p>`;
-        textArea+=`<p>Created: ${new Date(location.dateCreated).toLocaleString()}</p>`;
-
-        textArea += `<h5>Games:<h5><ul>`;
+      
+        let aName = document.createElement("p");
+        aName.innerHTML = "Name: " + location.name;
+      
+        let anAddress = document.createElement("p");
+        anAddress.innerHTML = "Address: " + location.address;
+      
+        let theNumGames = document.createElement("p");
+        theNumGames.innerHTML = "Number of Games: " + location.numGames;
+      
+        let theDate = document.createElement("p");
+        theDate.innerHTML =
+          "Created: " + new Date(location.dateCreated).toLocaleString();
+      
+        let gameHeader = document.createElement("h5");
+        gameHeader.innerHTML = "Games:";
+      
+        let theGames = document.createElement("ul");
         location.games.forEach((game) => {
-          textArea += `<li>${game}</li>`;
+          let aGame = document.createElement("li");
+          aGame.innerHTML = game;
+          theGames.appendChild(aGame);
         });
-        textArea += "</ul>";
-
-        textArea += `<h5>Creators:<h5><ul>`;
+      
+        let creatorHeader = document.createElement("h5");
+        creatorHeader.innerHTML = "Games:";
+      
+        let theCreators = document.createElement("ul");
         location.creators.forEach((creator) => {
-          textArea += `<li>${creator}</li>`;
+          let aCreator = document.createElement("li");
+          aCreator.innerHTML = creator;
+          theCreators.appendChild(aCreator);
         });
-        textArea += "</ul>";
-        elem.innerHTML = textArea;
+      
+        elem.append(
+          aName,
+          anAddress,
+          theNumGames,
+          theDate,
+          gameHeader,
+          theGames,
+          creatorHeader,
+          theCreators
+        );
+      
+        document.getElementsByTagName("body")[0].appendChild(elem)
         results.append(elem);
+        
       });
     })
     .catch((error) => console.log("Error: ", error));
