@@ -1,0 +1,43 @@
+li {
+  width: 20%;
+}
+
+#addGameForm {
+  border: 5px solid var(--lightblue);
+  color: var(--lightblue);
+  background-color: whitesmoke;
+  margin: auto;
+  width: 50%;
+  padding-bottom: 20px;
+  padding: 0.5em;
+}
+
+#addGameForm > h3 {
+  text-align: center;
+}
+
+#addGameForm > div {
+  margin: 1em;
+}
+
+#addGameForm > div > label {
+  text-align: left;
+  display: block;
+}
+
+#addGameForm > div > input {
+  width: 99.5%;
+}
+
+#addGameForm > div > button {
+  width: 49.5%;
+  margin-bottom: 0;
+}
+
+#addGameForm > #buttons > #submit {
+  background-color: var(--lightblue);
+}
+
+#addGameForm > #buttons > #reset {
+  background-color: var(--pink);
+}

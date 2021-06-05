@@ -9,6 +9,7 @@
       type="text/css"
       href="https://cdnjs.cloudflare.com/ajax/libs/twitter-bootstrap/4.4.1/css/bootstrap.min.css"
     />
+    <link rel="stylesheet" href="../styles/styles.css" />
     <link rel="stylesheet" href="../styles/addGame.css" />
   </head>
   <body>
@@ -33,6 +34,33 @@
           </li>
         </ul>
       </nav>
+      <form id="addGameForm">
+        <h3>Add a game</h3>
+        <div>
+          <label for="name">What Game are you adding?</label>
+          <input type="name" id="name" required="required" />
+        </div>
+        <div>
+          <label for="location">Where is this game located?</label>
+          <input type="location" id="location" required="required" />
+        </div>
+        <div>
+          <label for="maxPlayers">How many people can play this game?</label>
+          <input type="number" id="maxPlayers" />
+        </div>
+        <div>
+          <label for="minPlayers">minimum number of players</label>
+          <input type="number" id="minPlayers" />
+        </div>
+        <div>
+          <label for="reccuring">is this a reccuring event?</label>         
+          <input type="checkbox" id="reccuring" /> <br>
+        </div>
+        <div id="buttons">
+          <button type="submit" id="submit" alt="Submit Button">Add</button>
+          <button type="reset" id="reset" alt="Reset Button">Reset</button>
+        </div>
+      </form>
     </main>
   </body>
 </htmk>
