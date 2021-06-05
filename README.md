@@ -77,4 +77,4 @@ If you have done this correctly you should now be able to navigate your terminal
 
 ![image](https://user-images.githubusercontent.com/71666828/120891755-149a1600-c5bf-11eb-8f65-2ee1529acce3.png)
 
-If you have an issues please reach out and I will try to help! If you want to contribute or have any questions also feel free to reach out!
+If you have an issues please reach out and I will try to help! If you want to contribute or have any questions also feel free to reach out! Again you can contact me at alexdrhlt@gmail.com.
